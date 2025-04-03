@@ -17,24 +17,24 @@ public class Empresa {
 	
 	public double totalSueldosNetos() {
 		return empleados.stream()
-				.mapToInt((empleado) -> empleado.sueldoNeto())
+				.mapToDouble((empleado) -> empleado.sueldoNeto())
 				.sum();
 	}
 	
 	public double totalSueldosBrutos() {
 		return empleados.stream()
-				.mapToInt((empleado) -> empleado.sueldoBruto())
+				.mapToDouble((empleado) -> empleado.sueldoBruto())
 				.sum();
 	}
 
 	public double totalRetenciones() {
 		return empleados.stream()
-				.mapToInt((empleado) -> empleado.retenciones())
+				.mapToDouble((empleado) -> empleado.retenciones())
 				.sum();
 	}
 	
 	public void realizarLiquidacionesSueldos() {
-		//para cada emp, llamar static de Concepto pasando el emp y el
+		//para cada emp, llamar static de ReciboHab pasando el emp y el
 		//ReciboHaberes resultante se lo hacés guardar al emp con su
 		//método para eso
 	}
