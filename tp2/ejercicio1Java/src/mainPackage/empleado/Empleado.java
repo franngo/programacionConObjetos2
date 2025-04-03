@@ -2,6 +2,7 @@ package mainPackage.empleado;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import mainPackage.Concepto;
 import mainPackage.ReciboHaberes;
@@ -21,6 +22,7 @@ abstract public class Empleado {
 		this.estadoCivil = estadoCivil;
 		this.fechaNacimiento = fechaNacimiento;
 		this.sueldoBasico = sueldoBasico;
+		this.recibosDeHaberes = new ArrayList<ReciboHaberes>();
 	}
 	
 	public int edad() {
