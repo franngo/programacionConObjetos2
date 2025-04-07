@@ -11,7 +11,7 @@ public class ReciboHaberes {
     private Calendar fechaEmision = GregorianCalendar.getInstance();
     private double sueldoBruto;
     private double sueldoNeto;
-    private List<Concepto> desgloseConceptos;
+    private List<Concepto> desgloseConceptos; //esto también se podría implementar como un Map
 
     public static ReciboHaberes crearReciboHaberes(Empleado empleado ) {
         return new ReciboHaberes(empleado.getNombre(), 
@@ -42,7 +42,7 @@ public class ReciboHaberes {
     
     //PRECONDICIÓN: Debe haber numeroConcepto elementos en desgloseConceptos
     public Concepto conceptoNumero(int numeroConcepto) {
-    	return desgloseConceptos.get(numeroConcepto);
+    	return desgloseConceptos.get(numeroConcepto-1);
     }
 
 }

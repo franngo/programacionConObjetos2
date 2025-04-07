@@ -1,6 +1,7 @@
 package mainPackage;
 
 import java.util.Collection;
+import java.util.ArrayList;
 import mainPackage.empleado.Empleado;
 
 public class Empresa {
@@ -8,11 +9,21 @@ public class Empresa {
 	private String cuit;
 	private Collection<Empleado> empleados;
 	
+	public Empresa(String nombre, String cuit) {
+		this.nombre = nombre;
+		this.cuit = cuit;
+		this.empleados = new ArrayList<Empleado>();
+	}
+	
 	public Empresa(String nombre, String cuit, Collection<Empleado>
 	empleados) {
 		this.nombre = nombre;
 		this.cuit = cuit;
 		this.empleados = empleados;
+	}
+	
+	public void agregarEmpleado(Empleado empleado) {
+		empleados.add(empleado);
 	}
 	
 	public double totalSueldosNetos() {
