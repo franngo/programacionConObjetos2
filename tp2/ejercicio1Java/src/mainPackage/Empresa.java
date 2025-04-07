@@ -34,8 +34,9 @@ public class Empresa {
 	}
 	
 	public void realizarLiquidacionesSueldos() {
-		//para cada emp, llamar static de ReciboHab pasando el emp y el
-		//ReciboHaberes resultante se lo hacés guardar al emp con su
-		//método para eso
+		for (Empleado empleado : empleados) {
+			ReciboHaberes recibo = ReciboHaberes.crearReciboHaberes(empleado);
+			empleado.añadirReciboDeHaberes(recibo);
+		}
 	}
 }

@@ -1,21 +1,21 @@
 package mainPackage.empleado;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.util.List;
 
 import mainPackage.Concepto;
 
 public class PlantaTemporaria extends Empleado {
-	private GregorianCalendar finDesignacion;
+	private Calendar finDesignacion;
 	private int horasExtra;
 	final static double montoPorHorasExtra = 40;
 	final static double montoRetencionesPorEdad = 25;
 	final static double montoRetencionesPorHorasExtra = 5;
 	
 	public PlantaTemporaria(String nombre, String direccion, String 
-			estadoCivil, GregorianCalendar fechaNacimiento, double 
-			sueldoBasico, GregorianCalendar finDesignacion, int 
+			estadoCivil, Calendar fechaNacimiento, double 
+			sueldoBasico, Calendar finDesignacion, int 
 			horasExtra) {
 		super(nombre, direccion, estadoCivil, fechaNacimiento, sueldoBasico);
 		this.finDesignacion = finDesignacion;
@@ -37,7 +37,14 @@ public class PlantaTemporaria extends Empleado {
 	
 	@Override
 	public List<Concepto> desgloseConceptos() {
-		return new ArrayList<Concepto>(); //TERMINAR!!!!
+		List<Concepto> desglose = new ArrayList<Concepto>();
+		desglose.add(new Concepto("Sueldo Básico", this.getSueldoBasico()));
+		desglose.add(new Concepto("Bono por horas extras", this.bonoHorasExtras()));
+		desglose.add(new Concepto("Retenciones por Obra Social", this.porcentajeSueldoBruto(this.porcentajeRetencionesObraSocial())));
+		desglose.add(new Concepto("Retenciones de Obra Social por edad", this.retencionesPorEdad()));
+		desglose.add(new Concepto("Retenciones por Aportes Jubilatorios", this.porcentajeSueldoBruto(this.porcentajeRetencionesAportesJubilatorios())));
+		desglose.add(new Concepto("Retenciones de Aportes Jubilatorios por horas extras", this.retencionesPorHorasExtras()));
+		return desglose;
 	}
 	
 	private double bonoHorasExtras() {

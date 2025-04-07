@@ -1,9 +1,8 @@
 package mainPackage.empleado;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 import mainPackage.Concepto;
 import mainPackage.ReciboHaberes;
 
@@ -11,12 +10,12 @@ abstract public class Empleado {
 	private String nombre;
 	private String direccion;
 	private String estadoCivil;
-	private GregorianCalendar fechaNacimiento;
+	private Calendar fechaNacimiento;
 	private double sueldoBasico;
 	private List<ReciboHaberes> recibosDeHaberes = new ArrayList<ReciboHaberes>();
 	
 	public Empleado(String nombre, String direccion, String estadoCivil,
-			GregorianCalendar fechaNacimiento, double sueldoBasico) {
+			Calendar fechaNacimiento, double sueldoBasico) {
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.estadoCivil = estadoCivil;
@@ -25,7 +24,7 @@ abstract public class Empleado {
 	}
 	
 	public int edad() {
-		return GregorianCalendar.getInstance().getWeekYear() - 
+		return Calendar.getInstance().getWeekYear() - 
 				fechaNacimiento.getWeekYear();
 	}
 	

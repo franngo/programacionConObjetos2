@@ -1,6 +1,6 @@
 package mainPackage.empleado;
 
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -12,10 +12,10 @@ public class PlantaPermanente extends Empleado {
 	final static double montoAsignacionPorHijo = 150;
 	final static double montoAsignacionPorConyuge = 100;
 	final static double montoAsignacionPorAntiguedad = 50;
-	final static double montoRetencionesPorHijo = 20;
+	final static double montoObraSocialPorHijo = 20;
 	
 	public PlantaPermanente(String nombre, String direccion, String 
-			estadoCivil, GregorianCalendar fechaNacimiento, double 
+			estadoCivil, Calendar fechaNacimiento, double 
 			sueldoBasico, int cantidadHijos, int antiguedad) {
 		super(nombre, direccion, estadoCivil, fechaNacimiento, sueldoBasico);
 		this.cantidadHijos = cantidadHijos;
@@ -30,19 +30,19 @@ public class PlantaPermanente extends Empleado {
 	@Override
 	public double retenciones() {
 		return this.porcentajeSueldoBruto(this.porcentajeRetencionesObraSocial())
-		+ this.retencionesPorHijo() + this.porcentajeSueldoBruto(
+		+ this.retencionesObraSocialPorHijos() + this.porcentajeSueldoBruto(
 		this.porcentajeRetencionesAportesJubilatorios());
 	}
 	
 	@Override
 	public List<Concepto> desgloseConceptos() {
-		ArrayList<Concepto> desglose = new ArrayList<Concepto>();
-		desglose.add(new Concepto("Sueldo Bruto", this.sueldoBruto()));
+		List<Concepto> desglose = new ArrayList<Concepto>();
+		desglose.add(new Concepto("Sueldo Básico", this.getSueldoBasico()));
 		desglose.add(new Concepto("Asignación por hijo", this.asignacionPorHijo()));
 		desglose.add(new Concepto("Asignación por conyuge", this.asignacionPorConyuge()));
 		desglose.add(new Concepto("Bono por antiguedad", this.bonoPorAntiguedad()));
 		desglose.add(new Concepto("Retenciones por Obra Social", this.porcentajeSueldoBruto(this.porcentajeRetencionesObraSocial())));
-		desglose.add(new Concepto("Retenciones por Hijo", this.retencionesPorHijo()));
+		desglose.add(new Concepto("Retenciones por Obra Social de los hijos", this.retencionesObraSocialPorHijos()));
 		desglose.add(new Concepto("Retenciones por Aportes Jubilatorios", this.porcentajeSueldoBruto(this.porcentajeRetencionesAportesJubilatorios())));
 		return desglose;
 	}
@@ -68,8 +68,8 @@ public class PlantaPermanente extends Empleado {
 		return antiguedad * montoAsignacionPorAntiguedad;
 	}
 	
-	private double retencionesPorHijo() {
-		return cantidadHijos * montoRetencionesPorHijo;
+	private double retencionesObraSocialPorHijos() {
+		return cantidadHijos * montoObraSocialPorHijo;
 	}
 	
 	@Override
