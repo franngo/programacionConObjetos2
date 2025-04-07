@@ -72,8 +72,11 @@ public class PlantaPermanente extends Empleado {
 		return cantidadHijos * montoObraSocialPorHijo;
 	}
 	
-	@Override
-	protected int porcentajeRetencionesAportesJubilatorios() {
+	private int porcentajeRetencionesObraSocial() {
+		return 10;
+	}
+	
+	private int porcentajeRetencionesAportesJubilatorios() {
 		return 15;
 	}
 }

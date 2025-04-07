@@ -41,5 +41,14 @@ public class EmpresaTest {
 		assertEquals("Sueldo Básico", conceptoSueldoBasicoDaniel.getRazon());
 		assertEquals(850000, conceptoSueldoBasicoDaniel.getMonto());
 	}
+	
+	//SE AGREGA UN EMPLEADO CONTRATADO
+	@Test
+	void empleadoContratado() {
+		EmpleadoContratado carolina = new EmpleadoContratado("Carolina Gómez", "Córdoba 4442", "Soltero", new GregorianCalendar(2003, 3, 21), 400000, 387209, "Transferencia Bancaria a Cuenta Personal");
+		fortalezaSeguros.agregarEmpleado(carolina);
+		assertEquals(2508602, fortalezaSeguros.totalSueldosNetos()); //el de carolina es 399950
+	}
+	
 
 }

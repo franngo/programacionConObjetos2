@@ -62,12 +62,6 @@ abstract public class Empleado {
 		return recibosDeHaberes.getLast();
 	}
 	
-	protected int porcentajeRetencionesObraSocial() {
-		return 10;
-	}
-	
-	abstract protected int porcentajeRetencionesAportesJubilatorios();
-	
 	protected double porcentajeSueldoBruto(int porcentaje) {
 		return porcentaje * this.sueldoBruto() / 100;
 	}
