@@ -36,7 +36,15 @@ public class PlantaPermanente extends Empleado {
 	
 	@Override
 	public List<Concepto> desgloseConceptos() {
-		return new ArrayList<Concepto>(); //TERMINAR!!!!
+		ArrayList<Concepto> desglose = new ArrayList<Concepto>();
+		desglose.add(new Concepto("Sueldo Bruto", this.sueldoBruto()));
+		desglose.add(new Concepto("Asignación por hijo", this.asignacionPorHijo()));
+		desglose.add(new Concepto("Asignación por conyuge", this.asignacionPorConyuge()));
+		desglose.add(new Concepto("Bono por antiguedad", this.bonoPorAntiguedad()));
+		desglose.add(new Concepto("Retenciones por Obra Social", this.porcentajeSueldoBruto(this.porcentajeRetencionesObraSocial())));
+		desglose.add(new Concepto("Retenciones por Hijo", this.retencionesPorHijo()));
+		desglose.add(new Concepto("Retenciones por Aportes Jubilatorios", this.porcentajeSueldoBruto(this.porcentajeRetencionesAportesJubilatorios())));
+		return desglose;
 	}
 	
 	private double salarioFamiliar() {
@@ -49,7 +57,7 @@ public class PlantaPermanente extends Empleado {
 	}
 	
 	private double asignacionPorConyuge() {
-		if(this.getEstadoCivil()=="Casado") {
+		if(this.getEstadoCivil().equalsIgnoreCase("Casado")) {
 			return montoAsignacionPorConyuge;
 		} else {
 			return 0;

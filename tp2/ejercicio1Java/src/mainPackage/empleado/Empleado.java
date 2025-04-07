@@ -13,7 +13,7 @@ abstract public class Empleado {
 	private String estadoCivil;
 	private GregorianCalendar fechaNacimiento;
 	private double sueldoBasico;
-	private List<ReciboHaberes> recibosDeHaberes;
+	private List<ReciboHaberes> recibosDeHaberes = new ArrayList<ReciboHaberes>();
 	
 	public Empleado(String nombre, String direccion, String estadoCivil,
 			GregorianCalendar fechaNacimiento, double sueldoBasico) {
@@ -22,7 +22,6 @@ abstract public class Empleado {
 		this.estadoCivil = estadoCivil;
 		this.fechaNacimiento = fechaNacimiento;
 		this.sueldoBasico = sueldoBasico;
-		this.recibosDeHaberes = new ArrayList<ReciboHaberes>();
 	}
 	
 	public int edad() {
