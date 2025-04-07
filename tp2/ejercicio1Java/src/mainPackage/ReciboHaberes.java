@@ -39,5 +39,10 @@ public class ReciboHaberes {
     public int cantidadDeConceptos() {
         return desgloseConceptos.size();
     }
+    
+    //PRECONDICIÓN: Debe haber numeroConcepto elementos en desgloseConceptos
+    public Concepto conceptoNumero(int numeroConcepto) {
+    	return desgloseConceptos.get(numeroConcepto);
+    }
 
 }

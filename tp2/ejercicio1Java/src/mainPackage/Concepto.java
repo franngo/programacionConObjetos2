@@ -8,4 +8,12 @@ public class Concepto {
         this.concepto = concepto;
         this.monto = monto;
     }
+    
+    public String getRazon() {
+    	return concepto;
+    }
+    
+    public double getMonto() {
+    	return monto;
+    }
 }
