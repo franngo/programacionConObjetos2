@@ -37,7 +37,7 @@ public class EmpresaTest {
 		assertEquals(daniel.sueldoBruto(), reciboDaniel.getSueldoBruto());
 		assertEquals(daniel.sueldoNeto(), reciboDaniel.getSueldoNeto());
 		assertEquals(7, reciboDaniel.cantidadDeConceptos()); //los PlantaPermanente tienen 7 conceptos en sus recibos
-		Concepto conceptoSueldoBasicoDaniel = reciboDaniel.conceptoNumero(1);
+		Concepto conceptoSueldoBasicoDaniel = reciboDaniel.conceptoDelRecibo("Sueldo Básico");
 		assertEquals("Sueldo Básico", conceptoSueldoBasicoDaniel.getRazon());
 		assertEquals(850000, conceptoSueldoBasicoDaniel.getMonto());
 	}

@@ -1,8 +1,8 @@
 package mainPackage.empleado;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import mainPackage.Concepto;
 
@@ -36,14 +36,14 @@ public class PlantaTemporaria extends Empleado {
 	}
 	
 	@Override
-	public List<Concepto> desgloseConceptos() {
-		List<Concepto> desglose = new ArrayList<Concepto>();
-		desglose.add(new Concepto("Sueldo Básico", this.getSueldoBasico()));
-		desglose.add(new Concepto("Bono por horas extras", this.bonoHorasExtras()));
-		desglose.add(new Concepto("Retenciones por Obra Social", this.porcentajeSueldoBruto(this.porcentajeRetencionesObraSocial())));
-		desglose.add(new Concepto("Retenciones de Obra Social por edad", this.retencionesPorEdad()));
-		desglose.add(new Concepto("Retenciones por Aportes Jubilatorios", this.porcentajeSueldoBruto(this.porcentajeRetencionesAportesJubilatorios())));
-		desglose.add(new Concepto("Retenciones de Aportes Jubilatorios por horas extras", this.retencionesPorHorasExtras()));
+	public Map<String, Concepto> desgloseConceptos() {
+		Map<String, Concepto> desglose = new HashMap<String, Concepto>();
+		desglose.put("Sueldo Básico", new Concepto("Sueldo Básico", this.getSueldoBasico()));
+		desglose.put("Bono por horas extras", new Concepto("Bono por horas extras", this.bonoHorasExtras()));
+		desglose.put("Retenciones por Obra Social", new Concepto("Retenciones por Obra Social", this.porcentajeSueldoBruto(this.porcentajeRetencionesObraSocial())));
+		desglose.put("Retenciones de Obra Social por edad", new Concepto("Retenciones de Obra Social por edad", this.retencionesPorEdad()));
+		desglose.put("Retenciones por Aportes Jubilatorios", new Concepto("Retenciones por Aportes Jubilatorios", this.porcentajeSueldoBruto(this.porcentajeRetencionesAportesJubilatorios())));
+		desglose.put("Retenciones de Aportes Jubilatorios por horas extras", new Concepto("Retenciones de Aportes Jubilatorios por horas extras", this.retencionesPorHorasExtras()));
 		return desglose;
 	}
 	

@@ -1,8 +1,8 @@
 package mainPackage.empleado;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import mainPackage.Concepto;
 
@@ -30,10 +30,10 @@ public class EmpleadoContratado extends Empleado {
 	}
 	
 	@Override
-	public List<Concepto> desgloseConceptos() {
-		List<Concepto> desglose = new ArrayList<Concepto>();
-		desglose.add(new Concepto("Sueldo Básico", this.getSueldoBasico()));
-		desglose.add(new Concepto("Gastos Administrativos Contractuales", this.retenciones()));
+	public Map<String, Concepto> desgloseConceptos() {
+		Map<String, Concepto> desglose = new HashMap<String, Concepto>();
+		desglose.put("Sueldo Básico", new Concepto("Sueldo Básico", this.getSueldoBasico()));
+		desglose.put("Sueldo Básico", new Concepto("Gastos Administrativos Contractuales", this.retenciones()));
 		return desglose;
 	}
 

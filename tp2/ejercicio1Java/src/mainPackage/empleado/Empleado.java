@@ -1,6 +1,7 @@
 package mainPackage.empleado;
 
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.Calendar;
 import mainPackage.Concepto;
@@ -36,7 +37,7 @@ abstract public class Empleado {
 	
 	abstract public double retenciones();
 	
-	abstract public List<Concepto> desgloseConceptos();
+	abstract public Map<String, Concepto> desgloseConceptos();
 	
 	public void añadirReciboDeHaberes(ReciboHaberes recibo) {
 		recibosDeHaberes.add(recibo);

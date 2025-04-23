@@ -1,8 +1,8 @@
 package mainPackage.empleado;
 
 import java.util.Calendar;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 import mainPackage.Concepto;
 
@@ -35,15 +35,15 @@ public class PlantaPermanente extends Empleado {
 	}
 	
 	@Override
-	public List<Concepto> desgloseConceptos() {
-		List<Concepto> desglose = new ArrayList<Concepto>();
-		desglose.add(new Concepto("Sueldo Básico", this.getSueldoBasico()));
-		desglose.add(new Concepto("Asignación por hijo", this.asignacionPorHijo()));
-		desglose.add(new Concepto("Asignación por conyuge", this.asignacionPorConyuge()));
-		desglose.add(new Concepto("Bono por antiguedad", this.bonoPorAntiguedad()));
-		desglose.add(new Concepto("Retenciones por Obra Social", this.porcentajeSueldoBruto(this.porcentajeRetencionesObraSocial())));
-		desglose.add(new Concepto("Retenciones por Obra Social de los hijos", this.retencionesObraSocialPorHijos()));
-		desglose.add(new Concepto("Retenciones por Aportes Jubilatorios", this.porcentajeSueldoBruto(this.porcentajeRetencionesAportesJubilatorios())));
+	public Map<String, Concepto> desgloseConceptos() {
+		Map<String, Concepto> desglose = new HashMap<String, Concepto>();
+		desglose.put("Sueldo Básico", new Concepto("Sueldo Básico", this.getSueldoBasico()));
+		desglose.put("Asignación por hijo", new Concepto("Asignación por hijo", this.asignacionPorHijo()));
+		desglose.put("Asignación por conyuge", new Concepto("Asignación por conyuge", this.asignacionPorConyuge()));
+		desglose.put("Bono por antiguedad", new Concepto("Bono por antiguedad", this.bonoPorAntiguedad()));
+		desglose.put("Retenciones por Obra Social", new Concepto("Retenciones por Obra Social", this.porcentajeSueldoBruto(this.porcentajeRetencionesObraSocial())));
+		desglose.put("Retenciones por Obra Social de los hijos", new Concepto("Retenciones por Obra Social de los hijos", this.retencionesObraSocialPorHijos()));
+		desglose.put("Retenciones por Aportes Jubilatorios", new Concepto("Retenciones por Aportes Jubilatorios", this.porcentajeSueldoBruto(this.porcentajeRetencionesAportesJubilatorios())));
 		return desglose;
 	}
 	

@@ -1,6 +1,6 @@
 package mainPackage;
 
-import java.util.List;
+import java.util.Map;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import mainPackage.empleado.Empleado;
@@ -11,7 +11,7 @@ public class ReciboHaberes {
     private Calendar fechaEmision = GregorianCalendar.getInstance();
     private double sueldoBruto;
     private double sueldoNeto;
-    private List<Concepto> desgloseConceptos; //esto también se podría implementar como un Map
+    private Map<String, Concepto> desgloseConceptos; 
 
     public static ReciboHaberes crearReciboHaberes(Empleado empleado ) {
         return new ReciboHaberes(empleado.getNombre(), 
@@ -20,7 +20,7 @@ public class ReciboHaberes {
     }
 
     public ReciboHaberes(String nombre, String direccion, double sueldoBruto,
-    double sueldoNeto, List<Concepto> desgloseConceptos) {
+    double sueldoNeto, Map<String, Concepto> desgloseConceptos) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.sueldoBruto = sueldoBruto;
@@ -40,9 +40,9 @@ public class ReciboHaberes {
         return desgloseConceptos.size();
     }
     
-    //PRECONDICIÓN: Debe haber numeroConcepto elementos en desgloseConceptos
-    public Concepto conceptoNumero(int numeroConcepto) {
-    	return desgloseConceptos.get(numeroConcepto-1);
+    //PRECONDICIÓN: Debe haber existir un par con clave coincidente con el String dado por parámetro dentro de desgloseConceptos
+    public Concepto conceptoDelRecibo(String concepto) {
+    	return desgloseConceptos.get(concepto);
     }
 
 }
