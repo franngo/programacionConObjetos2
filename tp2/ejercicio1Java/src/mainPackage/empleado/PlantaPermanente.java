@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import mainPackage.Concepto;
 
-public class PlantaPermanente extends Empleado {
+public class PlantaPermanente extends EmpleadoPlanta {
 	private int cantidadHijos;
 	private int antiguedad;
 	final static double montoAsignacionPorHijo = 150;
@@ -29,7 +29,7 @@ public class PlantaPermanente extends Empleado {
 	
 	@Override
 	public double retenciones() {
-		return this.porcentajeSueldoBruto(this.porcentajeRetencionesObraSocial())
+		return this.porcentajeSueldoBruto(EmpleadoPlanta.porcentajeRetencionesObraSocial)
 		+ this.retencionesObraSocialPorHijos() + this.porcentajeSueldoBruto(
 		this.porcentajeRetencionesAportesJubilatorios());
 	}
@@ -41,7 +41,7 @@ public class PlantaPermanente extends Empleado {
 		desglose.put("Asignación por hijo", new Concepto("Asignación por hijo", this.asignacionPorHijo()));
 		desglose.put("Asignación por conyuge", new Concepto("Asignación por conyuge", this.asignacionPorConyuge()));
 		desglose.put("Bono por antiguedad", new Concepto("Bono por antiguedad", this.bonoPorAntiguedad()));
-		desglose.put("Retenciones por Obra Social", new Concepto("Retenciones por Obra Social", this.porcentajeSueldoBruto(this.porcentajeRetencionesObraSocial())));
+		desglose.put("Retenciones por Obra Social", new Concepto("Retenciones por Obra Social", this.porcentajeSueldoBruto(EmpleadoPlanta.porcentajeRetencionesObraSocial)));
 		desglose.put("Retenciones por Obra Social de los hijos", new Concepto("Retenciones por Obra Social de los hijos", this.retencionesObraSocialPorHijos()));
 		desglose.put("Retenciones por Aportes Jubilatorios", new Concepto("Retenciones por Aportes Jubilatorios", this.porcentajeSueldoBruto(this.porcentajeRetencionesAportesJubilatorios())));
 		return desglose;
@@ -68,15 +68,13 @@ public class PlantaPermanente extends Empleado {
 		return antiguedad * montoAsignacionPorAntiguedad;
 	}
 	
+	@Override
+	int porcentajeRetencionesAportesJubilatorios() {
+		return 15;
+	}
+	
 	private double retencionesObraSocialPorHijos() {
 		return cantidadHijos * montoObraSocialPorHijo;
 	}
 	
-	private int porcentajeRetencionesObraSocial() {
-		return 10;
-	}
-	
-	private int porcentajeRetencionesAportesJubilatorios() {
-		return 15;
-	}
 }

@@ -33,7 +33,7 @@ public class EmpleadoContratado extends Empleado {
 	public Map<String, Concepto> desgloseConceptos() {
 		Map<String, Concepto> desglose = new HashMap<String, Concepto>();
 		desglose.put("Sueldo Básico", new Concepto("Sueldo Básico", this.getSueldoBasico()));
-		desglose.put("Sueldo Básico", new Concepto("Gastos Administrativos Contractuales", this.retenciones()));
+		desglose.put("Gastos Administrativos Contractuales", new Concepto("Gastos Administrativos Contractuales", gastosAdministrativosContractuales));
 		return desglose;
 	}
 

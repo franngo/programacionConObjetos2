@@ -6,7 +6,7 @@ import java.util.Map;
 
 import mainPackage.Concepto;
 
-public class PlantaTemporaria extends Empleado {
+public class PlantaTemporaria extends EmpleadoPlanta {
 	private Calendar finDesignacion;
 	private int horasExtra;
 	final static double montoPorHorasExtra = 40;
@@ -29,7 +29,7 @@ public class PlantaTemporaria extends Empleado {
 	
 	@Override
 	public double retenciones() {
-		return this.porcentajeSueldoBruto(this.porcentajeRetencionesObraSocial())
+		return this.porcentajeSueldoBruto(EmpleadoPlanta.porcentajeRetencionesObraSocial)
 		+ this.retencionesPorEdad() + this.porcentajeSueldoBruto(
 		this.porcentajeRetencionesAportesJubilatorios()) +
 		this.retencionesPorHorasExtras();
@@ -40,7 +40,7 @@ public class PlantaTemporaria extends Empleado {
 		Map<String, Concepto> desglose = new HashMap<String, Concepto>();
 		desglose.put("Sueldo Básico", new Concepto("Sueldo Básico", this.getSueldoBasico()));
 		desglose.put("Bono por horas extras", new Concepto("Bono por horas extras", this.bonoHorasExtras()));
-		desglose.put("Retenciones por Obra Social", new Concepto("Retenciones por Obra Social", this.porcentajeSueldoBruto(this.porcentajeRetencionesObraSocial())));
+		desglose.put("Retenciones por Obra Social", new Concepto("Retenciones por Obra Social", this.porcentajeSueldoBruto(EmpleadoPlanta.porcentajeRetencionesObraSocial)));
 		desglose.put("Retenciones de Obra Social por edad", new Concepto("Retenciones de Obra Social por edad", this.retencionesPorEdad()));
 		desglose.put("Retenciones por Aportes Jubilatorios", new Concepto("Retenciones por Aportes Jubilatorios", this.porcentajeSueldoBruto(this.porcentajeRetencionesAportesJubilatorios())));
 		desglose.put("Retenciones de Aportes Jubilatorios por horas extras", new Concepto("Retenciones de Aportes Jubilatorios por horas extras", this.retencionesPorHorasExtras()));
@@ -51,11 +51,8 @@ public class PlantaTemporaria extends Empleado {
 		return horasExtra * montoPorHorasExtra;
 	}
 	
-	private int porcentajeRetencionesObraSocial() {
-		return 10;
-	}
-	
-	private int porcentajeRetencionesAportesJubilatorios() {
+	@Override
+	int porcentajeRetencionesAportesJubilatorios() {
 		return 10;
 	}
 	

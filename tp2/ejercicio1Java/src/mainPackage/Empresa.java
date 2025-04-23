@@ -1,21 +1,21 @@
 package mainPackage;
 
-import java.util.Collection;
-import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 import mainPackage.empleado.Empleado;
 
 public class Empresa {
 	private String nombre; 
 	private String cuit;
-	private Collection<Empleado> empleados;
+	private Set<Empleado> empleados;
 	
 	public Empresa(String nombre, String cuit) {
 		this.nombre = nombre;
 		this.cuit = cuit;
-		this.empleados = new ArrayList<Empleado>();
+		this.empleados = new HashSet<Empleado>();
 	}
 	
-	public Empresa(String nombre, String cuit, Collection<Empleado>
+	public Empresa(String nombre, String cuit, Set<Empleado>
 	empleados) {
 		this.nombre = nombre;
 		this.cuit = cuit;

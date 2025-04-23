@@ -24,7 +24,7 @@ abstract public class Empleado {
 		this.sueldoBasico = sueldoBasico;
 	}
 	
-	public int edad() {
+	public int edad() { //MEJORAR (capaz tenga que cambiar a otro tipo de dato como localDate) (márgen de error de 1 año)
 		return Calendar.getInstance().getWeekYear() - 
 				fechaNacimiento.getWeekYear();
 	}
@@ -63,7 +63,4 @@ abstract public class Empleado {
 		return recibosDeHaberes.getLast();
 	}
 	
-	protected double porcentajeSueldoBruto(int porcentaje) {
-		return porcentaje * this.sueldoBruto() / 100;
-	}
 }
