@@ -24,9 +24,11 @@ abstract public class Empleado {
 		this.sueldoBasico = sueldoBasico;
 	}
 	
-	public int edad() { //MEJORAR (capaz tenga que cambiar a otro tipo de dato como localDate) (márgen de error de 1 año)
-		return Calendar.getInstance().getWeekYear() - 
-				fechaNacimiento.getWeekYear();
+	public int edad() { //A MEJORAR: No tiene en cuenta años bisiestos en el cálculo para pasar de ms a años.
+		Long ms = (Calendar.getInstance().getTimeInMillis()) -
+				(fechaNacimiento.getTimeInMillis());
+		Double years = ms.doubleValue()/ 1000 / 60 / 60 / 24 / 365;
+		return years.intValue();
 	}
 	
 	public double sueldoNeto() {
